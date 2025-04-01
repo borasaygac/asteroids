@@ -18,10 +18,11 @@ def main():
         pygame.Surface.fill(screen, "black") 
 
         player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2) # Instantiate a player
+        player.update(dt)
         player.draw(screen)
 
         pygame.display.flip()
-        
+
         delta = clock.tick(60) # 60 fps limit
         dt = delta / 1000 # delta time between frames in seconds
 
