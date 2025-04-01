@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from player import *
 
 def main():
 
@@ -15,9 +16,16 @@ def main():
                 return
             
         pygame.Surface.fill(screen, "black") 
+
+        player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2) # Instantiate a player
+        player.draw(screen)
+
         pygame.display.flip()
+        
         delta = clock.tick(60) # 60 fps limit
         dt = delta / 1000 # delta time between frames in seconds
+
+        
 
 if __name__ == "__main__":
     main()
