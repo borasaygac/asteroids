@@ -33,9 +33,7 @@ A simple Asteroids game built using Python and Pygame.
 
 Arrow Up: Thrust forward
 
-Left/Right Arrows: 
-
-Rotate the spaceship
+Left/Right Arrows: Rotate the spaceship
 
 Spacebar: Shoot
 
