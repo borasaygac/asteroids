@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from circleshape import CircleShape
 from constants import *
 from shot import Shot
@@ -9,6 +9,7 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shot_timer = 0
+        self.score = 0 
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -42,6 +43,8 @@ class Player(CircleShape):
             self.move(dt=-dt)
         if keys[pygame.K_SPACE]:
             self.shoot()
+        if keys[pygame.K_ESCAPE]: # Currently directly exits, will provide a screen later
+            sys.exit()
             
 
     def shoot(self):
@@ -50,5 +53,9 @@ class Player(CircleShape):
         self.shot_timer = PLAYER_SHOOT_COOLDOWN
         shot = Shot(x=self.position.x, y=self.position.y)
         shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+
+    def increase_score(self, amount):
+        self.score += amount
+        print(f"current score {self.score}")
         
     
