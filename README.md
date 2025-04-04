@@ -12,6 +12,8 @@ A simple Asteroids game built using Python and Pygame.
 ## To be implemented 
 
 - Scoring system
+    - Scoring in general done
+    - The visualization is a to-do
 - Sound effects
 
 ## Installation

@@ -4,13 +4,16 @@ from constants import *
 from player import *
 from asteroids import *
 from asteroidfield import *
+from text_visualization import *
 
 def main():
 
     pygame.init() #init pygame
     clock = pygame.time.Clock()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #define the screen size
-    
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) # define the screen size
+    score_box = pygame.Surface((SCREEN_WIDTH // 4, SCREEN_HEIGHT // 8)) # define a score_box to display current score
+    font = pygame.font.SysFont("freesansbold", 30) # define font 
+
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -33,7 +36,8 @@ def main():
             if event.type == pygame.QUIT:
                 return
             
-        pygame.Surface.fill(screen, "black") 
+        pygame.Surface.fill(screen, "black") # fill the screen black
+        pygame.Surface.fill(score_box, "black") # fill the surface box black 
 
         updatable.update(dt)
 
@@ -49,12 +53,13 @@ def main():
         for obj in drawable:
             obj.draw(screen)
 
+        score_box_visualization(font = font, player = player,screen = screen)
+
+
         pygame.display.flip()
 
        # 60 fps limit
         dt = clock.tick(60) / 1000 # delta time between frames in seconds
-
-        
 
 if __name__ == "__main__":
     main()
