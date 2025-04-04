@@ -53,8 +53,7 @@ def main():
         for obj in drawable:
             obj.draw(screen)
 
-        score_box_visualization(font = font, player = player,screen = screen)
-
+        score_box_visualization(font = font, player = player,screen = screen) # Visualizes the score in a box
 
         pygame.display.flip()
 

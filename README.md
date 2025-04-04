@@ -12,8 +12,12 @@ A simple Asteroids game built using Python and Pygame.
 ## To be implemented 
 
 - Scoring system
-    - Scoring in general done
-    - The visualization is a to-do
+    - There is a score box on the top left.
+    - A leaderboard that is permanent. Top 40. Old arcade style
+- Health for Asteroids
+- Leveling System
+- Background of the field
+- Better asteroid shapes
 - Sound effects
 
 ## Installation
