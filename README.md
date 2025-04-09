@@ -14,11 +14,27 @@ A simple Asteroids game built using Python and Pygame.
 - Scoring system
     - There is a score box on the top left.
     - A leaderboard that is permanent. Top 40. Old arcade style
+        - 3 Character saving system, plus the score
+        - Scroll effect  
+- Opening page
+    - Start Button 
+    - Controls Section that explains what the controls are
+    - Options (for future releases)
+- Closing page
 - Health for Asteroids
+- Spaceship visual
 - Leveling System
+    - Different "spaceships"
+    - different weapons 
+        - big area affecting ones
+        - faster shooting weapons 
+- Bonus systems that you can catch 
+    - Temporary better shoot rate
+    - Faster movement
 - Background of the field
 - Better asteroid shapes
 - Sound effects
+- Making the spaceship not move beyond the limits of the screen
 
 ## Installation
 
