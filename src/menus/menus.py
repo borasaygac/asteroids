@@ -19,10 +19,10 @@ def start_menu(screen, font):
         exit_button = font.render("Quit Game", "True", "white")
 
         # get the button rectangles and their positions 
-        title_rectangle = title_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4))
-        start_rectangle = start_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
+        title_rectangle = title_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4 - 100))
+        start_rectangle = start_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 100))
         options_rectangle = options_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-        exit_rectangle = exit_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50))
+        exit_rectangle = exit_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 100))
 
         # draw the buttons on the screen
         screen.blit(title_text, title_rectangle)

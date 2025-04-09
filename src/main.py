@@ -12,7 +12,7 @@ def main():
     pygame.init() #init pygame
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) # define the screen size
-    font = pygame.font.SysFont("freesansbold", 30) # define font 
+    font = pygame.font.SysFont("consolas", 48) # define font 
 
     # Show the start menu 
     menu_choice = start_menu(screen = screen, font = font)
