@@ -56,6 +56,5 @@ class Player(CircleShape):
 
     def increase_score(self, amount):
         self.score += amount
-        print(f"current score {self.score}")
         
     

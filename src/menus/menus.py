@@ -1,7 +1,8 @@
 import pygame 
 import sys
 from src.constants import SCREEN_HEIGHT, SCREEN_WIDTH, LEADERBOARD_PATH, MAX_ENTRIES, BG_COLOR, TITLE_COLOR
-from input_box import InitialsInputBox
+from .input_box import InitialsInputBox
+from ..leaderboard.leaderboard import load_leaderboard
 
 def start_menu(screen, font):
     # Displays the start menu with 3 buttons on it.
@@ -92,7 +93,7 @@ def final_menu(screen, score):
     small_font = pygame.font.SysFont('consolas', 24)
     clock = pygame.time.Clock()
 
-    leaderboard = load_leaderboard(LEADERBOARD_PATH)
+    leaderboard = load_leaderboard()
     is_high_score = len(leaderboard) < MAX_ENTRIES or score > leaderboard[-1]['score']
     initials = ""
 
