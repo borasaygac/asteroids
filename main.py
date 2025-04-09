@@ -5,15 +5,22 @@ from player import *
 from asteroids import *
 from asteroidfield import *
 from text_visualization import *
+from start_menu import start_menu
 
 def main():
 
     pygame.init() #init pygame
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) # define the screen size
-    score_box = pygame.Surface((SCREEN_WIDTH // 4, SCREEN_HEIGHT // 8)) # define a score_box to display current score
     font = pygame.font.SysFont("freesansbold", 30) # define font 
 
+    # Shot the start menu 
+    menu_choice = start_menu(screen = screen, font = font)
+    if menu_choice == "options":
+        screen.blit("to be implemented")
+        return 
+
+    score_box = pygame.Surface((SCREEN_WIDTH // 4, SCREEN_HEIGHT // 8)) # define a score_box to display current score
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
