@@ -15,3 +15,8 @@ PLAYER_SHOOT_COOLDOWN = 0.3 # seconds
 
 SHOT_RADIUS = 5
 
+LEADERBOARD_PATH = "src/leaderboard/leaderboard.json"
+MAX_ENTRIES = 40
+
+BG_COLOR = (10, 10, 10) #for the final menu
+TITLE_COLOR = (150, 200, 255) #for the final menu

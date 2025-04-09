@@ -5,7 +5,7 @@ from src.player import *
 from src.asteroids import *
 from src.asteroidfield import *
 from src.text_visualization import *
-from src.start_menu import start_menu, pause_menu
+from src.menus.menus import start_menu, pause_menu, final_menu
 
 def main():
 
@@ -37,7 +37,9 @@ def main():
     
     dt = 0
 
-    while True: #infinite game loop
+    running = True
+
+    while running: #infinite game loop
         
         for event in pygame.event.get(): # Check for closed window and quit game
             if event.type == pygame.QUIT:
@@ -55,9 +57,15 @@ def main():
         updatable.update(dt)
 
         for asteroid in asteroids:
-            if asteroid.collision(player):
-                print("Game over!")
-                sys.exit()
+            if asteroid.collision(player): # end the game if the player collides with an asteroid
+                final_score = player.score
+                result = final_menu(screen, final_score)
+
+                if result == "replay":
+                    return main()
+                else:
+                    pygame.quit()
+                    sys.exit()
             for shot in shots:
                 if asteroid.collision(shot):
                     asteroid.split(player)
