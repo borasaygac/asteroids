@@ -31,5 +31,17 @@ def start_menu(screen, font):
         pygame.display.flip()
 
         #handle the events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: # left mouse click
+                if start_rectangle.collidepoint(event.pos):
+                    return "start"
+                elif options_rectangle.collidepoint(event.pos):
+                    return "options"
+                elif exit_rectangle.collidepoint(event.pos):
+                    pygame.quit()
+                    sys.exit()
 
                                               
