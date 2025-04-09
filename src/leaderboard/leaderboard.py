@@ -27,7 +27,16 @@ def load_leaderboard():
         return {}
 
 def save_leaderboard(leaderboard):
-    pass
+    
+    with open(LEADERBOARD_PATH, 'w') as leaderboard_file:
+        json.dump(leaderboard, leaderboard_file)   
 
 def add_score(name, score, leaderboard, max_entries = MAX_ENTRIES):
-    pass
+    
+    leaderboard[name] = score
+    
+    sorted_leaderboard = sorted(leaderboard.items(),key = lambda item: item[1], reverse = True)
+
+    trimmed_leaderboard = dict(sorted_leaderboard[:max_entries])
+
+    return trimmed_leaderboard

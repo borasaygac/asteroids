@@ -2,7 +2,7 @@ import pygame
 import sys
 from src.constants import SCREEN_HEIGHT, SCREEN_WIDTH, LEADERBOARD_PATH, MAX_ENTRIES, BG_COLOR, TITLE_COLOR
 from .input_box import InitialsInputBox
-from ..leaderboard.leaderboard import load_leaderboard
+from ..leaderboard.leaderboard import load_leaderboard, save_leaderboard, add_score
 
 def start_menu(screen, font):
     # Displays the start menu with 3 buttons on it.
@@ -94,11 +94,14 @@ def final_menu(screen, score):
     clock = pygame.time.Clock()
 
     leaderboard = load_leaderboard()
+
+    sorted_leaderboard = [{"name": name, "score": score} for name, score in sorted(leaderboard.items(), key=lambda item: item[1], reverse=True)]
     is_high_score = len(leaderboard) < MAX_ENTRIES or score > leaderboard[-1]['score']
+    
     initials = ""
 
     if is_high_score:
-        input_box = InitialsInputBox(300, 220, 140, 50, font)
+        input_box = InitialsInputBox(SCREEN_WIDTH // 2 - 75, 220, 140, 50, font)
     
     while True:
         for event in pygame.event.get():
@@ -111,7 +114,7 @@ def final_menu(screen, score):
                 if result:
                     initials = result
                     add_score(initials, score, leaderboard, MAX_ENTRIES)
-                    save_leaderboard(LEADERBOARD_PATH, leaderboard)
+                    save_leaderboard(leaderboard)
                     is_high_score = False  # Hide input box now
 
             if event.type == pygame.KEYDOWN:
@@ -140,7 +143,7 @@ def final_menu(screen, score):
         leaderboard_title = small_font.render("Top Pilots of the Galaxy:", True, "white")
         screen.blit(leaderboard_title, (screen.get_width()//2 - leaderboard_title.get_width()//2, 300))
 
-        for idx, entry in enumerate(leaderboard[:MAX_ENTRIES]):
+        for idx, entry in enumerate(sorted_leaderboard[:MAX_ENTRIES]):
             line = small_font.render(f"{idx+1}. {entry['name']} .... {entry['score']}", True, "white")
             screen.blit(line, (screen.get_width()//2 - line.get_width()//2, 340 + idx * 30))
 
