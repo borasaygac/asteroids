@@ -60,7 +60,7 @@ A simple Asteroids game built using Python and Pygame.
 
 ### 3. Run the game:
 
-`python main.py`
+`python run_game.py`
 
 ## Controls
 

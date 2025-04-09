@@ -1,7 +1,7 @@
 import pygame, sys
-from circleshape import CircleShape
-from constants import *
-from shot import Shot
+from src.circleshape import CircleShape
+from src.constants import *
+from src.shot import Shot
 # Class for the player obkect
 class Player(CircleShape):
 

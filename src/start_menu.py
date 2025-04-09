@@ -1,6 +1,6 @@
 import pygame 
 import sys
-from constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from src.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 
 def start_menu(screen, font):
     # Displays the start menu with 3 buttons on it.

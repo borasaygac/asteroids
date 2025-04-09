@@ -1,11 +1,11 @@
 import pygame
 import sys
-from constants import *
-from player import *
-from asteroids import *
-from asteroidfield import *
-from text_visualization import *
-from start_menu import start_menu, pause_menu
+from src.constants import *
+from src.player import *
+from src.asteroids import *
+from src.asteroidfield import *
+from src.text_visualization import *
+from src.start_menu import start_menu, pause_menu
 
 def main():
 
