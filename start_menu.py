@@ -44,4 +44,43 @@ def start_menu(screen, font):
                     pygame.quit()
                     sys.exit()
 
-                                              
+def pause_menu(screen, font):
+    # Displays the start menu with 3 buttons on it.
+    # 1. Resume
+    # 2. Restart 
+    # 3. Quit
+
+    while True:
+        screen.fill("black")
+        pause_text = font.render("Paused", True, "white")
+        resume_button = font.render("Resume", True, "white")
+        restart_button = font.render("Restart", True, "white")
+        quit_button = font.render("Quit Game", True, "white")
+
+        # Get button rectangles for positioning
+        pause_rect = pause_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4))
+        resume_rect = resume_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))
+        restart_rect = restart_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+        quit_rect = quit_button.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50))
+
+        # Draw buttons and title
+        screen.blit(pause_text, pause_rect)
+        screen.blit(resume_button, resume_rect)
+        screen.blit(restart_button, restart_rect)
+        screen.blit(quit_button, quit_rect)
+
+        pygame.display.flip()
+
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse click
+                if resume_rect.collidepoint(event.pos):
+                    return "resume"
+                elif restart_rect.collidepoint(event.pos):
+                    return "restart"
+                elif quit_rect.collidepoint(event.pos):
+                    pygame.quit()
+                    sys.exit()

@@ -5,7 +5,7 @@ from player import *
 from asteroids import *
 from asteroidfield import *
 from text_visualization import *
-from start_menu import start_menu
+from start_menu import start_menu, pause_menu
 
 def main():
 
@@ -14,10 +14,10 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) # define the screen size
     font = pygame.font.SysFont("freesansbold", 30) # define font 
 
-    # Shot the start menu 
+    # Show the start menu 
     menu_choice = start_menu(screen = screen, font = font)
     if menu_choice == "options":
-        screen.blit("to be implemented")
+        screen.blit(screen ,"to be implemented")
         return 
 
     score_box = pygame.Surface((SCREEN_WIDTH // 4, SCREEN_HEIGHT // 8)) # define a score_box to display current score
@@ -42,6 +42,12 @@ def main():
         for event in pygame.event.get(): # Check for closed window and quit game
             if event.type == pygame.QUIT:
                 return
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: #Listen for Escape key
+                pause_choice = pause_menu(screen = screen, font = font)
+                if pause_choice == "restart":
+                    return main() # Restart the game
+                elif pause_choice == "resume":
+                    continue
             
         pygame.Surface.fill(screen, "black") # fill the screen black
         pygame.Surface.fill(score_box, "black") # fill the surface box black 
