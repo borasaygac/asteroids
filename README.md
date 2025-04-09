@@ -37,21 +37,22 @@ A simple Asteroids game built using Python and Pygame.
 ## Implemented Features
 
 ### - Scoring System
-        - There is a score box on the top left. 
+
+- There is a score box on the top left. 
 
 ### - Pause Menu
-        - 3 options (Resume, Restart, and Quit)
+
+- 3 options (Resume, Restart, and Quit)
 
 ### - Start Menu
-        - Currently has 3 option (Start, Options (for the future updates), Quit Game)
 
-
+- Currently has 3 options (Start, Options [for the future updates], Quit Game)
 
 ## Installation
 
 ### 1. Clone the repository:
 
-`git clone https://github.com/borasaygac/asteroids.git`
+`git clone https://github.com/borasaygac/asteroids.git`<br>
 `cd asteroids`
 
 ### 2. Install dependencies:
@@ -70,7 +71,7 @@ Left/Right Arrows: Rotate the spaceship
 
 Spacebar: Shoot
 
-Esc: Quit the game
+Esc: Pause the game
 
 ## Contributing
 
