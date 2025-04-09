@@ -12,12 +12,10 @@ A simple Asteroids game built using Python and Pygame.
 ## To be implemented 
 
 - Scoring system
-    - There is a score box on the top left.
     - A leaderboard that is permanent. Top 40. Old arcade style
         - 3 Character saving system, plus the score
         - Scroll effect  
-- Opening page
-    - Start Button 
+- Opening page 
     - Controls Section that explains what the controls are
     - Options (for future releases)
 - Closing page
@@ -35,6 +33,19 @@ A simple Asteroids game built using Python and Pygame.
 - Better asteroid shapes
 - Sound effects
 - Making the spaceship not move beyond the limits of the screen
+
+## Implemented Features
+
+### - Scoring System
+        - There is a score box on the top left. 
+
+### - Pause Menu
+        - 3 options (Resume, Restart, and Quit)
+
+### - Start Menu
+        - Currently has 3 option (Start, Options (for the future updates), Quit Game)
+
+
 
 ## Installation
 
