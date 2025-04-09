@@ -1,6 +1,7 @@
 import pygame 
 import sys
-from src.constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from src.constants import SCREEN_HEIGHT, SCREEN_WIDTH, LEADERBOARD_PATH, MAX_ENTRIES, BG_COLOR, TITLE_COLOR
+from input_box import InitialsInputBox
 
 def start_menu(screen, font):
     # Displays the start menu with 3 buttons on it.
@@ -84,3 +85,70 @@ def pause_menu(screen, font):
                 elif quit_rect.collidepoint(event.pos):
                     pygame.quit()
                     sys.exit()
+
+def final_menu(screen, score):
+    pygame.font.init()
+    font = pygame.font.SysFont('consolas', 48)
+    small_font = pygame.font.SysFont('consolas', 24)
+    clock = pygame.time.Clock()
+
+    leaderboard = load_leaderboard(LEADERBOARD_PATH)
+    is_high_score = len(leaderboard) < MAX_ENTRIES or score > leaderboard[-1]['score']
+    initials = ""
+
+    if is_high_score:
+        input_box = InitialsInputBox(300, 220, 140, 50, font)
+    
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if is_high_score:
+                result = input_box.handle_event(event)
+                if result:
+                    initials = result
+                    add_score(initials, score, leaderboard, MAX_ENTRIES)
+                    save_leaderboard(LEADERBOARD_PATH, leaderboard)
+                    is_high_score = False  # Hide input box now
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    return "replay"
+                elif event.key == pygame.K_q:
+                    return "quit"
+
+        screen.fill(BG_COLOR)
+
+        # Title
+        title = font.render("GAME OVER", True, TITLE_COLOR)
+        screen.blit(title, (screen.get_width()//2 - title.get_width()//2, 50))
+
+        # Score
+        score_text = font.render(f"Your Score: {score}", True, "white")
+        screen.blit(score_text, (screen.get_width()//2 - score_text.get_width()//2, 120))
+
+        # Input for initials
+        if is_high_score:
+            prompt = small_font.render("New High Score! Enter your initials:", True, "white")
+            screen.blit(prompt, (screen.get_width()//2 - prompt.get_width()//2, 180))
+            input_box.draw(screen)
+        
+        # Leaderboard
+        leaderboard_title = small_font.render("Top Pilots of the Galaxy:", True, "white")
+        screen.blit(leaderboard_title, (screen.get_width()//2 - leaderboard_title.get_width()//2, 300))
+
+        for idx, entry in enumerate(leaderboard[:MAX_ENTRIES]):
+            line = small_font.render(f"{idx+1}. {entry['name']} .... {entry['score']}", True, "white")
+            screen.blit(line, (screen.get_width()//2 - line.get_width()//2, 340 + idx * 30))
+
+        # Footer
+        footer = small_font.render("[R] Replay    [Q] Quit", True, "white")
+        screen.blit(footer, (screen.get_width()//2 - footer.get_width()//2, screen.get_height() - 60))
+
+        pygame.display.flip()
+        clock.tick(30)
+
+
+    
